@@ -1,6 +1,6 @@
-# ==========================================
+
 # BANCO DE DADOS TEMPORÁRIO (SIMULAÇÃO DE BD)
-# ==========================================
+
 # Simula a tabela 'clientes' do MySQL
 banco_clientes = []
 
@@ -13,9 +13,9 @@ banco_produtos = [
 
 cliente_logado = None
 
-# ==========================================
+
 # LOOP PRINCIPAL DA APLICAÇÃO
-# ==========================================
+
 while True:
     print("\n" + "=" * 50)
     print("        SISTEMA DE LOJA - PEDIDO E FRETE")
@@ -34,9 +34,9 @@ while True:
 
     opcao_menu = input("\nEscolha uma opção: ").strip()
 
-    # ----------------------------------------------------
+
     # OPÇÃO DE CADASTRO (Quando não há cliente logado)
-    # ----------------------------------------------------
+
     if opcao_menu == "1" and not cliente_logado:
         print("\n--- CADASTRO DE CLIENTE ---")
         while True:
@@ -59,9 +59,9 @@ while True:
         banco_clientes.append(novo_cliente)
         print(f"\n✅ Cliente '{nome_limpo}' cadastrado com sucesso!")
 
-    # ----------------------------------------------------
+
     # OPÇÃO DE LOGIN (Quando não há cliente logado)
-    # ----------------------------------------------------
+
     elif opcao_menu == "2" and not cliente_logado:
         print("\n--- LOGIN DE CLIENTE ---")
         email_login = input("E-mail: ").strip().lower()
@@ -79,9 +79,9 @@ while True:
         if not sucesso_login:
             print("\n❌ Erro: E-mail ou senha incorretos! (Cadastre-se primeiro se for novo cliente).")
 
-    # ----------------------------------------------------
+
     # REALIZAR PEDIDO (Quando o cliente ESTÁ LOGADO)
-    # ----------------------------------------------------
+
     elif opcao_menu == "1" and cliente_logado:
         print(f"\n=== REALIZANDO PEDIDO PARA: {cliente_logado['nome']} ===")
 
@@ -173,17 +173,17 @@ while True:
         print("         Obrigado pela preferência!           ")
         print("=" * 50)
 
-    # ----------------------------------------------------
+
     # CONSULTAR ESTOQUE
-    # ----------------------------------------------------
+
     elif opcao_menu == "2" and cliente_logado:
         print("\n--- CONSULTA DE ESTOQUE ATUALIZADO ---")
         for p in banco_produtos:
             print(f"Produto: {p['nome']:<30} | Preço: R$ {p['preco']:<6.2f} | Em Estoque: {p['estoque']} un.")
 
-    # ----------------------------------------------------
+
     # LOGOUT
-    # ----------------------------------------------------
+
     elif opcao_menu == "3" and cliente_logado:
         print(f"\nAté logo, {cliente_logado['nome']}! Logout realizado com sucesso.")
         cliente_logado = None
